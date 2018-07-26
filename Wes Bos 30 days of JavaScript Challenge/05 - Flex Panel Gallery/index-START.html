@@ -135,15 +135,14 @@
 
     function toggleOpen() {
       const current = document.querySelector('.open');
-      current && current.classList.toggle('open');
       this.classList.toggle('open');
+      current && current.classList.toggle('open');
+      current === this && current.classList.toggle('open');
     }
 
     function toggleActive(e) {
-      console.log('is anything happening?')
       if(e.propertyName.includes('flex')) {
-      
-      this.classList.toggle('open-active');
+        this.classList.toggle('open-active');
       }
     }
 
