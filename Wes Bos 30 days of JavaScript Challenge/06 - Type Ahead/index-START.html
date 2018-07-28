@@ -28,7 +28,24 @@
     return list.filter(city => city.city.match(regex) || city.state.match(regex));
   };
 
-  
+  function displayResults() {
+    const match = findCity(this.value, locations)
+    const results = match.map(city => {
+      return `
+        <li>
+          <div class="name">${city.city}, ${city.state}</div>
+          <div class="population">${city.population}</div>
+        </li>
+      `;
+    }).join();
+    suggestions.innerHTML = results;
+  }
+
+  const searchForm = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
+
+  searchForm.addEventListener('change', displayResults);
+  searchForm.addEventListener('keyup', displayResults);
 
 
 
