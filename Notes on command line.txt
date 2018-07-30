@@ -1,0 +1,52 @@
+Test. 
+
+* speak of differences in pipes? 
+
+// create a csv file
+// write stream first line "Process ID, Command name"
+// use ps -ef to list all processes
+// use PGREP to grab process ID
+  // use grep ? use wildcard (*) to grab all names and all processses? 
+
+  SORT KEYS
+       Note that the values used in sorting are the internal val-
+       ues ps uses and not the `cooked' values used  in  some  of
+       the  output format fields. Pipe ps output into the sort(1)
+       command if you want to sort the cooked values.
+
+ps -Ao pid => selects all (-A), O for sorting, PID(key)
+ps -Ao command => selects all commands
+
+
+maybe -eo? 
+
+!!! ps -ef => shows information about EVERY process
+
+===> loook into this 
+ps -e -o "osz pid s tty time comm" | head -1
+ps -e -o "osz pid s tty time comm" | tail +2 | sort -n
+====
+
+
+Sooooo, it just doesn't work on MAC. 
+On linux terminal: 
+ps -eo "pid comm" --sort -comm
+
+===> working solution with renaming, figure out how to add space. 
+ps -eo "pid=Process,comm=Command" -o "," --sort -comm  >> test.csv
+
+ps -e -o pid="Process ID" -o comm="Command Name" --sort -comm | sed add delimiter >> filename.csv
+
+
+
+//select all processes and format output to display process id and command name
+ps -e --sort -comm -o pid,comm
+
+// pipe change of column names
+| sed -e '1s/PID/Programm ID/' -e '1s/COMMAND/Command name/'
+
+// use AWK to set delimiter
+| awk -F 
+
+
+ps -e -o pid,comm --sort -comm | awk -F" " '{ print $1","$2 }' | sed -e '1s/PID/Programm ID/' -e '1s/COMMAND/Command name/' >> testResults.csv
