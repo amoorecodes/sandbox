@@ -57,7 +57,11 @@
     // find the comment with the ID of 823423
 
 
-    // Array.prototype.findIndex()
+    Array.prototype.findIndex = function(condition) {
+      this.forEach(item => (function(item) {
+        if(condition(item)) {return this.indexOf(item)}
+      }))
+    }
     // Find the comment with this ID
     // delete the comment with the ID of 823423
 
