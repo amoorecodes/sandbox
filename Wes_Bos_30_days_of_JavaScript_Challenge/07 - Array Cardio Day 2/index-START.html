@@ -25,8 +25,24 @@
     ];
 
     // Some and Every Checks
-    // Array.prototype.some() // is at least one person 19 or older?
-    // Array.prototype.every() // is everyone 19 or older?
+    Array.prototype.some = function(condition) {
+      let answer = false;
+      this.forEach(item => {
+        condition(item) && (answer = true);
+      });
+      return answer;
+    } // is at least one person 19 or older?
+
+
+
+
+    Array.prototype.every(item => function(condition) {
+      let answer = true;
+      this.forEach(item => {
+        condition(item) || (answer = false);
+      });
+      return answer;
+    }); // is everyone 19 or older?
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
