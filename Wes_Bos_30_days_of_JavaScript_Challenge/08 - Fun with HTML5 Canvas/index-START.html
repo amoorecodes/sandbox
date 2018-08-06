@@ -19,10 +19,12 @@
   let isDrawing = false;
   let endingX = 0;
   let endingY = 0;
+  let hue = 7;
 
   function draw(e) {
     if(!isDrawing) {return};
     console.log(e);
+    context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     context.beginPath();
     // starting point
     context.moveTo(endingX, endingY);
@@ -32,6 +34,7 @@
     context.stroke();
     // change X and Y
     [endingX, endingY] = [e.offsetX, e.offsetY];
+    hue++; 
   }
 
   canvas.addEventListener('mousedown', (e) => {
