@@ -41,15 +41,19 @@
     // Grouping together
     dogs.forEach(dog => {
       console.group(`${dog.name}`);
+      //console.groupCollapsed(`${dog.name}`);
       console.log('1');
       console.log('2');
       console.log(`${dog.name} is ${dog.age} years old`)
       console.groupEnd(`${dog.name}`);
     });
-
     // counting
-
+    console.count('hugo');
     // timing
+    console.time('fetching...');
+    fetch('https://api.github.com/users/unfaceit')
+      .then(data => data.json())
+      .then(data => {console.timeEnd('fetching...'); console.log(data)});
 
   </script>
 </body>
