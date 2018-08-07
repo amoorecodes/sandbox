@@ -20,6 +20,7 @@
   let endingX = 0;
   let endingY = 0;
   let hue = 7;
+  let lineStrength = 0;
 
   function draw(e) {
     if(!isDrawing) {return};
@@ -35,6 +36,8 @@
     // change X and Y
     [endingX, endingY] = [e.offsetX, e.offsetY];
     hue++; 
+    (context.lineWidth >= 100 || context.lineWidth <= 1) && (direction = !direction);
+    context.lineWidth++;
   }
 
   canvas.addEventListener('mousedown', (e) => {
