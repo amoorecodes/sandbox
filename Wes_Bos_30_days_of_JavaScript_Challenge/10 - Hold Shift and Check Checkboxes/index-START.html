@@ -99,8 +99,18 @@
   </div>
 
 <script>
+  // select all checkboxes
+  const checkbox = document.querySelectorAll('.item input');
   // add event listener for checkbox 
+  console.log(checkbox);
+
+  const checkMultiple = () => console.log('hello');
+
+  // checkbox.addEventListener('click', checkMultiple)
   // if shift is pressed, when clicked, then wait until second checkbox clicked while shift is intact
+  window.addEventListener('keydown', (e) => {
+    console.log(e.keyCode)
+  });
   // if first index is higher than second, then seleect all from second to first
   // if second index is greater, select all from 1st to 2nd
   
