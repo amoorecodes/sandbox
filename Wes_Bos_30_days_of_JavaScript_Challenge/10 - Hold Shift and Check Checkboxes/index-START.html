@@ -106,47 +106,30 @@
   console.log(checkbox)
   // add event listener for checkbox 
   let startPoint = undefined;
+  let lastClicked = undefined;
 
   const checkMultiple = (e) => {
-    if (e.shiftKey) {
-      // console.log(checkbox.indexOf(e.path[0]))
-      if (startPoint) {
-        let endPoint = checkbox.indexOf(e.path[0]);
-        for (let i = Math.min(startPoint, endPoint); i <= Math.max(startPoint, endPoint); i++) {
-          checkbox[i].checked = true;
-        }
-      } else {
-        pressed = true;
-        startPoint = checkbox.indexOf(e.path[0]);
-      }
-      //toggle class input:pressed for all checkboxes in between
-    } 
-  };
-  checkbox.forEach(item => item.addEventListener('click', checkMultiple))
-
-
-  // if shift is pressed, when clicked, then wait until second checkbox clicked while shift is intact
-      // window.addEventListener('keydown', (e) => {
-      //   if (e.keyCode === 16) {
-      //     pressed = true;
-      //     console.log(pressed);
+    if (e.shiftKey && e.target.checked) {
+      let range = false;
+      checkbox.forEach(item => {
+        (item === e.target || item === lastClicked) && (range = !range);
+        range && (item.checked = true);
+      })
+      
+      // if (startPoint) {
+      //   let endPoint = checkbox.indexOf(e.target);
+      //   for (let i = Math.min(startPoint, endPoint); i <= Math.max(startPoint, endPoint); i++) {
+      //     checkbox[i].checked = true;
       //   }
-      // });
-
-      // window.addEventListener('keyup', (e) => {
-      //   if (e.keyCode === 16) {
-      //     pressed = false;
-      //     console.log(pressed);
-      //   } 
-      // });
-
-  // if first index is higher than second, then seleect all from second to first
-
-  // if second index is greater, select all from 1st to 2nd
-  
-  // use key identifier
-  // use key pressed
-  // use key released? 
+      // } else {
+      //   startPoint = checkbox.indexOf(e.target);
+      // }
+      
+    } 
+      lastClicked = e.target;;
+      console.log(lastClicked, checkbox.indexOf(lastClicked));
+  };
+  checkbox.forEach(item => item.addEventListener('click', checkMultiple));
 </script>
 </body>
 </html>
