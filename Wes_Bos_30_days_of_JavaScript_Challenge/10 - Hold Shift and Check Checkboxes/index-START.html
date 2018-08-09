@@ -106,14 +106,27 @@
   console.log(checkbox)
   // add event listener for checkbox 
   let pressed = false;
+  let startPoint = undefined;
+
+  window.addEventListener('keyup', (e) => (e.keyCode === 16) && (pressed = false))
 
   const checkMultiple = (e) => {
     if (e.shiftKey) {
-      console.log(checkbox.indexOf(e.path[0]))
+      // console.log(checkbox.indexOf(e.path[0]))
+      if (startPoint) {
+        let endPoint = checkbox.indexOf(e.path[0]);
+        for (let i = Math.min(startPoint, endPoint); i <= Math.max(startPoint, endPoint); i++) {
+          checkbox[i].className += ":checked";
+        }
+      } else {
+        pressed = true;
+        startPoint = checkbox.indexOf(e.path[0]);
+      }
       //toggle class input:pressed for all checkboxes in between
     } 
   };
   checkbox.forEach(item => item.addEventListener('click', checkMultiple))
+
 
   // if shift is pressed, when clicked, then wait until second checkbox clicked while shift is intact
       // window.addEventListener('keydown', (e) => {
