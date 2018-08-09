@@ -100,29 +100,35 @@
 
 <script>
   // select all checkboxes
-  const checkbox = document.querySelectorAll('.item input');
+  const checkbox = [];
+  document.querySelectorAll('.item input').forEach(item => checkbox.push(item));
+
+  console.log(checkbox)
   // add event listener for checkbox 
-  console.log(checkbox);
   let pressed = false;
+
   const checkMultiple = (e) => {
-    console.log(e);
+    if (e.shiftKey) {
+      console.log(checkbox.indexOf(e.path[0]))
+      //toggle class input:pressed for all checkboxes in between
+    } 
   };
   checkbox.forEach(item => item.addEventListener('click', checkMultiple))
 
   // if shift is pressed, when clicked, then wait until second checkbox clicked while shift is intact
-  window.addEventListener('keydown', (e) => {
-    if (e.keyCode === 16) {
-      pressed = true;
-      console.log(pressed);
-    }
-  });
+      // window.addEventListener('keydown', (e) => {
+      //   if (e.keyCode === 16) {
+      //     pressed = true;
+      //     console.log(pressed);
+      //   }
+      // });
 
-  window.addEventListener('keyup', (e) => {
-    if (e.keyCode === 16) {
-      pressed = false;
-      console.log(pressed);
-    } 
-  });
+      // window.addEventListener('keyup', (e) => {
+      //   if (e.keyCode === 16) {
+      //     pressed = false;
+      //     console.log(pressed);
+      //   } 
+      // });
 
   // if first index is higher than second, then seleect all from second to first
 
