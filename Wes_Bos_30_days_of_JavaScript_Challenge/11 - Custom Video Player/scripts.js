@@ -9,6 +9,11 @@ const range = player.querySelector('.player__slider');
 function togglePlay() {
   video.paused ? video.play() : video.pause();
 }
+function toggleButton() {
+  toggle.textContent = video.paused ? 'play' : 'pause';
+}
 
 video.addEventListener('click', togglePlay);
+video.addEventListener('play', toggleButton);
+video.addEventListener('pause', toggleButton);
 toggle.addEventListener('click', togglePlay);
