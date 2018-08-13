@@ -40,3 +40,4 @@ skipButton.forEach(btn => btn.addEventListener('click', handleSkip));
 range.forEach(rng => rng.addEventListener('change', handleRange));
 range.forEach(rng => rng.addEventListener('mousemove', handleRange));
 progress.addEventListener('click', handlePlaybackClick);
+
