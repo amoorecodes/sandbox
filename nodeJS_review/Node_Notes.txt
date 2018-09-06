@@ -1,0 +1,29 @@
+            ==== Node JS ====
+
+*** available modules ***
+
+path => prints/ manipulates the path to a file. 
+
+*** available methods ***
+
+__dirname => prints out directory path
+
+__filename => prints out filename path
+
+
+
+
+Apache is multithreaded === single task gets its own thread.
+Node is singlethreaded / asynchronous === no blocking. 
+It can do more than one thing at a time.
+All events are put in the que (stack) and are served in order. 
+
+Node has global object as a top level object. It has a handful of methods (including console, for example).
+
+console.log('something') === global.console.log('something')
+
+It works similar to browser but is not the same. 
+
+Variables are scoped in Node, they are not stored in Global object. They can be accessed as is. 
+
+When you run node command you can leave out .js in file, as it is assumed the file would be .js . 
