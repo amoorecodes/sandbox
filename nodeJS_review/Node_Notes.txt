@@ -19,6 +19,10 @@ events =>
   exec() => executes commands to bash. Made for async sync processes with small piesces of data. 
   spawn() => Made for longer, more complex processes with larger data. 
 
+filesystem => manipulates files on a computer
+  readdirSync() => creates a list of all files in given directory, syncronously. Can clog the thread. 
+  
+
 *** available methods ***
 
 __dirname => prints out directory path
