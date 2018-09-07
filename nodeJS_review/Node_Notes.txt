@@ -16,7 +16,8 @@ events =>
   on('customEvent', do this) => do special things on custom event
   emit('customEvent', args) => execute .on condition
 
-  
+  exec() => executes commands to bash. Made for async sync processes with small piesces of data. 
+  spawn() => Made for longer, more complex processes with larger data. 
 
 *** available methods ***
 
@@ -32,6 +33,9 @@ serInterval() => repeatedly executes a callback after given time (does not exit)
 
 clearInterval() / clearTimeout() => stops either/or
 
+open => opens files in external windows:
+  . => opens directory in finder
+  https:// => opens website in default browser
 
 
 
