@@ -3,6 +3,20 @@
 *** available modules ***
 
 path => prints/ manipulates the path to a file. 
+  basename() => plucks out the name of the file from path
+
+util => utilities module
+  log() => more detailed than console
+
+readline => asks questions, writes answers
+  question()
+
+events => 
+  new EventEmitter() => creates an instance of event
+  on('customEvent', do this) => do special things on custom event
+  emit('customEvent', args) => execute .on condition
+
+  
 
 *** available methods ***
 
@@ -10,6 +24,29 @@ __dirname => prints out directory path
 
 __filename => prints out filename path
 
+write() => send a message to a terminal
+
+setTimeout() => waits given time than executes a callback
+
+serInterval() => repeatedly executes a callback after given time (does not exit)
+
+clearInterval() / clearTimeout() => stops either/or
+
+
+
+
+
+
+*** available objects *** 
+
+console => self-explanatory
+
+process => get env info, manipulate process instance
+
+  stdin => input
+  stdout => output
+    clearLine() => erases the message
+    cursorTo() => goes to given character index / line
 
 
 
@@ -27,3 +64,6 @@ It works similar to browser but is not the same.
 Variables are scoped in Node, they are not stored in Global object. They can be accessed as is. 
 
 When you run node command you can leave out .js in file, as it is assumed the file would be .js . 
+
+Standard Input/ Output
+
