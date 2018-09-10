@@ -1,10 +1,14 @@
 const { createReadStream, createWriteStream } = require('fs');
 
 const readStream = createReadStream('../../powder-day.mp4');
-const writeStream = createWriteStream('./copy.mp4');
+const writeStream = createWriteStream('./copy.mp4', {
+  highWaterMark: 1628920
+});
 
 readStream.on('data', (chunk) => {
-    writeStream.write(chunk);
+  const isFull = writeStream.write(chunk);
+  isFull || (console.log('Drainage!'), readStream.pause());
+
 });
 
 readStream.on('error', (error) => {
@@ -17,4 +21,9 @@ readStream.on('end', () => {
 
 writeStream.on('close', () => {
     process.stdout.write('file copied\n');
+})
+
+writeStream.on('drain', () => {
+  console.log('Drained the buffer');
+  readStream.resume();
 })
